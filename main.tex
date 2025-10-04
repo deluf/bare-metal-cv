@@ -1,0 +1,219 @@
+
+% BareMetal CV template for LaTeX noobs (me included)
+% github.com/deluf
+
+% --- DOCUMENT SETTINGS ---
+
+\documentclass[11pt]{article} 
+% This line defines the overall class (type) of the LaTeX document.
+% Different classes have different default settings, commands, margins, fonts, and behavior.
+% Common classes are "book", "letter" and "article".
+% The latter is the most appropriate for short documents such as a CV/resume
+
+\pagestyle{empty}
+% No headers, no footers, no bullshit (e.g., removes the page number when using the "article" class)
+
+\setlength{\parindent}{0pt} 
+% Disables automatic paragraph indentation (i.e., does not indent the first word of each new line)
+
+% --- PACKAGES ---
+
+% Packages expand the functionality of plain LaTeX. We are only going to use the bare minimum:
+\usepackage{geometry} % A standard package for adjusting the layout of the document
+\usepackage{hyperref} % Clickable links/urls
+\usepackage{enumitem} % Gives fine control over lists
+
+% --- PACKAGES SETTINGS ---
+
+\geometry{
+    letterpaper,
+    % "letterpaper" is the US standard for printable paper. 
+    % The rest of the world uses "a4paper", which is slightly taller and narrower.
+    % Not that big of a deal IMO, no one prints CVs nowadays. Change only if you have a reason to
+    left=0.075\paperwidth,
+    right=0.075\paperwidth,
+    top=0.075\paperheight,
+    bottom=0.075\paperheight
+    % Margins are expressed in percentages relative to the paper dimensions.
+    % You can also specify the margins in millimiter (mm), inches (in) or points (pt)
+}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\setlist[itemize]{
+    label=-,          % If you want normal bullet points use \textbullet instead of -
+    topsep=0pt,       % No space above/below the list
+    itemsep=0pt,      % No space between items
+    parsep=0pt,       % No space within items
+    leftmargin=20pt   % Reduced space left to the bullet point
+}
+
+% --- CUSTOM COMMANDS ---
+
+\newcommand
+{\newsection}[1]{
+    \vspace{10pt}   % Vertical space to separate from the section above
+    \textbf{#1}     % The section title (passed as the only [1] argument)
+    \vspace{3pt}    
+    \hrule          % An horizontal line
+    \vspace{7pt}
+}
+
+\newcommand
+{\smallvspace}{
+    \vspace{5pt}
+}
+% Custom vspace command used for consistent spacing across the document
+
+% --- BODY ---
+
+\begin{document} % The actual content starts here - the ones above are just settings
+
+% --- NAME & CONTACTS ---
+
+\begin{center} 
+    
+    {\LARGE \textbf{FirstName LastName} } \\
+    % Use a big (\LARGE) font size and bold (\textbf) font weight for the title (\\ means line break).
+    % For a full list of possible font sizes, check: https://www.overleaf.com/learn/latex/Font_sizes%2C_families%2C_and_styles#Putting_it_all_together
+    
+    \smallvspace
+    
+    % For this section, restrict the horizontal space to 90% of the document body (\textwidth).
+    % Adjust the percentage as needed
+    \begin{minipage}{0.9\textwidth}
+        +00 000 000 0000 \hfill 
+        \href{https://github.com/you}{github.com/you} \hfill 
+        \href{https://yourwebsite.org}{yourwebsite.org} \hfill
+        \href{https://linkedin.com/in/you}{linkedin.com/in/you} \hfill 
+        email@example.com
+    \end{minipage}
+
+    % Notes:
+    % \hfill expands to as much horizontal space as needed to fill a whole line
+    % \href syntax is: \href{true url}{display text}
+
+\end{center}
+
+% If your links don't fit on a single line, use the alternative two-lines style:
+%  1. Add \usepackage{tabularx} near the other packages
+%  2. Uncomment the code for the two-lines style below
+%  3. Delete the code for the single-line style above
+
+%\begin{center}
+%
+%    {\LARGE \textbf{FirstName LastName} } \\
+%    
+%    %\vspace{-\baselineskip} 
+%    % You can uncomment the line above to push the name inside the empty space in the first-row.
+%    % \baselineskip is equal to the font size specified in the document class
+%    
+%    \begin{tabularx}{0.9\textwidth}{
+%        >{\raggedright\arraybackslash}X
+%        >{\centering\arraybackslash}X
+%        >{\raggedleft\arraybackslash}X
+%        % X -> A stretchable column whose width is adjusted automatically
+%        % >{...} -> Applies a command to the contents of the column
+%            % \centering, \ragged[left/right] -> Text alignment
+%            % \arraybackslash -> Allow \\ (line breaks) at the end of the row
+%    }
+%        +00 000 000 0000 & & email@example.com \\
+%        \href{https://github.com/you}{github.com/you} &
+%        \href{https://yourwebsite.org}{yourwebsite.org} &
+%        \href{https://linkedin.com/in/you}{linkedin.com/in/you} \\
+%        % Table syntax is: element_1 & ... & element_N \\
+%        % You can skip elements (... & & ...)
+%    \end{tabularx}
+%
+%\end{center}
+
+% --- EXPERIENCE ---
+
+\vspace{-10pt} 
+% Balances the vspace introduce by the \newsection tag (it's the first section)
+\newsection{EXPERIENCE}
+
+\textbf{Company name} \hfill Jan 2025 - Current \\
+Job title \hfill City, State
+\begin{itemize}
+    \item Accomplished X by implementing Y which led to Z
+    \item Increased test coverage of the Android app by 80\%, which reduced bug tickets from users by 50\%
+    \item Built a Node.js API and microservice from scratch with 70\% + unit test coverage to serve 100,000+ users
+\end{itemize}
+
+\smallvspace
+
+\textbf{Company name} \hfill Jun 2023 - Sept 2023 \\
+Job title \hfill City, State 
+\begin{itemize}
+    \item Reduced android client size by 4.2 MBs, which is correlated to a 0.4\% increase in signups
+    \item Helped the team achieve a X\% increase in velocity through the use of the burndown chart and Jira
+    \item Developed and deployed an machine learning model to mitigate first-party fraud by \$2.7M in Q4' 19
+\end{itemize}
+
+% --- EDUCATION ---
+
+\newsection{EDUCATION}
+
+\textbf{University name} \hfill May 2026 \\
+Degree name \hfill City, State
+\begin{itemize}
+    \item Final grade / GPA / Thesis title
+    \item Track / Relevant coursework
+\end{itemize}
+
+\smallvspace
+
+\textbf{University name} \hfill Sept 2023 \\
+Degree name \hfill City, State
+\begin{itemize}
+    \item Final grade / GPA / Thesis title
+    \item Track / Relevant coursework
+\end{itemize}
+
+% --- PROJECTS ---
+
+\newsection{PROJECTS}
+
+\textbf{Project name} - Tech stack
+\hfill \href{https://github.com/you}{github.com/you/a} \\
+Developed an open-source library with Y+ GitHub stars that solves Z problem
+
+\smallvspace
+
+\textbf{Project name} - Tech stack
+\hfill \href{https://github.com/you}{github.com/you/b} \\
+Created a monitoring dashboard for CI/CD pipelines; downloaded X times; adopted by Y enterprise teams
+
+\smallvspace
+
+\textbf{Project name} - Tech stack
+\hfill \href{https://github.com/you}{github.com/you/c} \\
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam lobortis facilisis sem. Nullam nec mi et neque pharetra sollicitudin. Praesent imperdiet mi nec ante. Donec ullamcorper, felis non sodales commodo, lectus velit ultrices augue, a dignissim nibh lectus placerat pede
+
+% --- SKILLS ---
+
+\newsection{ACHIEVEMENTS}
+
+\begin{itemize}
+    \item Volunteered for X cause, raised Y\$
+    \item X player ranked among top Y\% in Z year ratings
+    \item Competed in X, achieved score Y (top Z\% out of W participants)
+    \item Awarded scholarship X of Y\$ for Z reason
+\end{itemize}
+
+% --- EXTRACURRICULAR ---
+
+\newsection{EXTRACURRICULAR}
+
+\textbf{Skills}: Cloud computing (Hadoop, Spark), object-oriented programming (Java, C++), linux systems, functional programming (Erlang, Haskell)
+
+\textbf{Languages}: Italian (native), Ukrainian (native), English (full professional proficiency)
+
+\textbf{Personal interests}: Trekking, rowing, mixed martial arts, fishing
+
+\end{document}
