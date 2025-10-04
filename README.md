@@ -58,6 +58,6 @@ No obscure LaTeX packages, just geometry, hyperref and enumitem.
 
 No weird commands or hard to understand syntactic sugars.
 
-Just 43 lines of simple, easy to understand LaTeX code.
+Just a single file containing 43 lines of simple, easy to understand LaTeX code.
 
 > (43 lines excluding the actual content and comments ~ 200 lines for a complete CV)
