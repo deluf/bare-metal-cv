@@ -1,8 +1,8 @@
 # Bare-Metal CV
 
-Bare-Metal CV is a minimal (yet professional), beginner-friendly, highly-customizable CV/resume template in under 50 lines of LaTeX
+Bare-Metal CV is a minimal (yet professional), beginner-friendly, highly-customizable CV/resume template in under 45 lines of LaTeX
 
-<img src="example.png" alt="Example" width=800>
+<img src="example.png" alt="Example" width=600>
 
 Don't believe it?
 
