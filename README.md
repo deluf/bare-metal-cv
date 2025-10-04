@@ -11,9 +11,9 @@ Don't believe it?
 \pagestyle{empty}
 \setlength{\parindent}{0pt} 
 
-\usepackage{geometry} % A standard package for adjusting the layout of the document
-\usepackage{hyperref} % Clickable links/urls
-\usepackage{enumitem} % Gives fine control over lists
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
 
 \geometry{
     letterpaper,
