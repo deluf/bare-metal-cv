@@ -83,7 +83,7 @@
     \smallvspace
     
     % For this section, restrict the horizontal space to 90% of the document body (\textwidth).
-    % Adjust the percentage as needed
+    % Adjust the percentage as needed (completely remove the minipage to use all available width)
     \begin{minipage}{0.9\textwidth}
         +00 000 000 0000 \hfill 
         \href{https://github.com/you}{github.com/you} \hfill 
@@ -98,49 +98,22 @@
 
 \end{center}
 
-% If your links don't fit on a single line, use the alternative two-lines style:
-%  1. Add \usepackage{tabularx} near the other packages
-%  2. Uncomment the code for the two-lines style below
-%  3. Delete the code for the single-line style above
-
-%\begin{center}
-%
-%    {\LARGE \textbf{FirstName LastName} } \\
-%    
-%    %\vspace{-\baselineskip} 
-%    % You can uncomment the line above to push the name inside the empty space in the first-row.
-%    % \baselineskip is equal to the font size specified in the document class
-%    
-%    \begin{tabularx}{0.9\textwidth}{
-%        >{\raggedright\arraybackslash}X
-%        >{\centering\arraybackslash}X
-%        >{\raggedleft\arraybackslash}X
-%        % X -> A stretchable column whose width is adjusted automatically
-%        % >{...} -> Applies a command to the contents of the column
-%            % \centering, \ragged[left/right] -> Text alignment
-%            % \arraybackslash -> Allow \\ (line breaks) at the end of the row
-%    }
-%        +00 000 000 0000 & & email@example.com \\
-%        \href{https://github.com/you}{github.com/you} &
-%        \href{https://yourwebsite.org}{yourwebsite.org} &
-%        \href{https://linkedin.com/in/you}{linkedin.com/in/you} \\
-%        % Table syntax is: element_1 & ... & element_N \\
-%        % You can skip elements (... & & ...)
-%    \end{tabularx}
-%
-%\end{center}
+% If your links don't fit on a single line, you can build pretty much any layout
+%  using \hspace{} \hfill \\ and \vspace (anyway you can ask any LLM to do that)
 
 % --- EXPERIENCE ---
 
 \vspace{-10pt} 
 % Balances the vspace introduce by the \newsection tag (it's the first section)
+
 \newsection{EXPERIENCE}
 
 \textbf{Company name} \hfill Jan 2025 - Current \\
 Job title \hfill City, State
 \begin{itemize}
     \item Accomplished X by implementing Y which led to Z
-    \item Increased test coverage of the Android app by 80\%, which reduced bug tickets from users by 50\%
+    \item Increased test coverage of the Android app by 80\%, which reduced bug tickets from users by 50\% 
+    % Note how you must escape (prefix with \) the % symbols otherwise they are interpreted as comments
     \item Built a Node.js API and microservice from scratch with 70\% + unit test coverage to serve 100,000+ users
 \end{itemize}
 
@@ -164,6 +137,10 @@ Degree name \hfill City, State
     \item Final grade / GPA / Thesis title
     \item Track / Relevant coursework
 \end{itemize}
+
+% Note: if you type " (e.g., in the thesis title), LaTeX will probably substitute it
+%  with some kind of "smart" or "fancy" quote instead. To force plain ASCII " you can
+%  user \verb|"| or \texttt{"}
 
 \smallvspace
 
