@@ -18,9 +18,10 @@
 % --- PACKAGES ---
 
 % Packages expand the functionality of plain LaTeX. We are only going to use the bare minimum:
-\usepackage{geometry} % A standard package for adjusting the layout of the document
-\usepackage{hyperref} % Clickable links/urls
-\usepackage{enumitem} % Gives fine control over lists
+\usepackage{charter}    % A better looking font (IMO, feel free to remove)
+\usepackage{geometry}   % A standard package for adjusting the layout of the document
+\usepackage{hyperref}   % Clickable links/urls
+\usepackage{enumitem}   % Gives fine control over lists
 
 % --- PACKAGES SETTINGS ---
 
@@ -31,8 +32,8 @@
     % Not that big of a deal IMO, no one prints CVs nowadays. Change only if you have a reason to
     left=0.075\paperwidth,
     right=0.075\paperwidth,
-    top=0.075\paperheight,
-    bottom=0.075\paperheight
+    top=0.05\paperheight,
+    bottom=0.05\paperheight
     % Margins are expressed in percentages relative to the paper dimensions.
     % You can also specify the margins in millimiter (mm), inches (in) or points (pt)
 }
@@ -44,7 +45,8 @@
 }
 
 \setlist[itemize]{
-    label=-,          % If you want normal bullet points use \textbullet instead of -
+    % A slightly smaller bullet point instead, raised to be center aligned with the text
+    label=\raisebox{1pt}{\footnotesize\textbullet},
     topsep=0pt,       % No space above/below the list
     itemsep=0pt,      % No space between items
     parsep=0pt,       % No space within items
@@ -54,12 +56,18 @@
 % --- CUSTOM COMMANDS ---
 
 \newcommand
-{\newsection}[1]{
-    \vspace{10pt}   % Vertical space to separate from the section above
-    \textbf{#1}     % The section title (passed as the only [1] argument)
-    \vspace{3pt}    
+{\opensection}[1]{
+    \uppercase{#1}  % The section title (passed as the only [1] argument)
+    \vspace{3pt}    % Vertical space to separate from the section above
     \hrule          % An horizontal line
-    \vspace{7pt}
+    \begin{center}  % Slightly offset the contents of the section
+    \begin{minipage}[]{0.975\textwidth}
+}
+
+\newcommand
+{\closesection}{
+    \end{minipage}
+    \end{center}
 }
 
 \newcommand
@@ -103,10 +111,7 @@
 
 % --- EXPERIENCE ---
 
-\vspace{-10pt} 
-% Balances the vspace introduce by the \newsection tag (it's the first section)
-
-\newsection{EXPERIENCE}
+\opensection{Experience}
 
 \textbf{Company name} \hfill Jan 2025 - Current \\
 Job title \hfill City, State
@@ -124,12 +129,14 @@ Job title \hfill City, State
 \begin{itemize}
     \item Reduced android client size by 4.2 MBs, which is correlated to a 0.4\% increase in signups
     \item Helped the team achieve a X\% increase in velocity through the use of the burndown chart and Jira
-    \item Developed and deployed an machine learning model to mitigate first-party fraud by \$2.7M in Q4' 19
+    \item Developed and deployed an machine learning model to mitigate first-party fraud by \$2.7M in Q4\texttt{'}19
 \end{itemize}
+
+\closesection
 
 % --- EDUCATION ---
 
-\newsection{EDUCATION}
+\opensection{Education}
 
 \textbf{University name} \hfill May 2026 \\
 Degree name \hfill City, State
@@ -151,29 +158,33 @@ Degree name \hfill City, State
     \item Track / Relevant coursework
 \end{itemize}
 
+\closesection
+
 % --- PROJECTS ---
 
-\newsection{PROJECTS}
+\opensection{Projects}
 
-\textbf{Project name} - Tech stack
-\hfill \href{https://github.com/you}{github.com/you/a} \\
+\textbf{Project name} | \textit{Tech stack}
+\hfill [\href{https://github.com/you}{github.com/you/a}] \\
 Developed an open-source library with Y+ GitHub stars that solves Z problem
 
 \smallvspace
 
-\textbf{Project name} - Tech stack
-\hfill \href{https://github.com/you}{github.com/you/b} \\
+\textbf{Project name} | \textit{Tech stack}
+\hfill [\href{https://github.com/you}{github.com/you/b}] \\
 Created a monitoring dashboard for CI/CD pipelines; downloaded X times; adopted by Y enterprise teams
 
 \smallvspace
 
-\textbf{Project name} - Tech stack
-\hfill \href{https://github.com/you}{github.com/you/c} \\
+\textbf{Project name} | \textit{Tech stack}
+\hfill [\href{https://github.com/you}{github.com/you/c}] \\
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam lobortis facilisis sem. Nullam nec mi et neque pharetra sollicitudin. Praesent imperdiet mi nec ante. Donec ullamcorper, felis non sodales commodo, lectus velit ultrices augue, a dignissim nibh lectus placerat pede
 
-% --- SKILLS ---
+\closesection
 
-\newsection{ACHIEVEMENTS}
+% --- ACHIEVEMENTS ---
+
+\opensection{Achievements}
 
 \begin{itemize}
     \item Volunteered for X cause, raised Y\$
@@ -182,14 +193,22 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam lobortis facilis
     \item Awarded scholarship X of Y\$ for Z reason
 \end{itemize}
 
+\closesection
+
 % --- EXTRACURRICULAR ---
 
-\newsection{EXTRACURRICULAR}
+\opensection{Extracurricular}
 
 \textbf{Skills}: Cloud computing (Hadoop, Spark), object-oriented programming (Java, C++), linux systems, functional programming (Erlang, Haskell)
 
+\smallvspace
+
 \textbf{Languages}: Italian (native), Ukrainian (native), English (full professional proficiency)
 
+\smallvspace
+
 \textbf{Personal interests}: Trekking, rowing, mixed martial arts, fishing
+
+\closesection
 
 \end{document}
